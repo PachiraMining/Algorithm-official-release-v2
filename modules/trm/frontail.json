@@ -1,0 +1,24 @@
+{
+
+    "words": {
+    "hashrate": "color: #0066B2;",
+        "clock": "color: #0066B2;",
+    "vccint": "color: #0066B2;",
+    "accepted": "color: green;",
+    "invalid": "color: #0066B2;"
+
+    },
+
+    "lines": {
+
+        "E300": "color: #0066B2;",
+        "mFPGA": "color: #0066B2;",
+         "Mh/s": "color: #0066B2;",
+         "Uptime": "color: #0066B2;",
+        "mTotal": "color: #0066B2;",
+	 "mMining": "color: #0066B2;",
+	 "share": "color: green;"
+
+    }
+
+}

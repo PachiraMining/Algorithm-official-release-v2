@@ -1,0 +1,16 @@
+
+[Unit]
+Description=radiant
+Wants=network.target
+After=syslog.target network-online.target controller.service updatemac.service
+
+
+[Service]
+Type=simple
+ExecStart=/opt/radiant/startradiant.sh
+Restart=always
+RestartSec=5
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
