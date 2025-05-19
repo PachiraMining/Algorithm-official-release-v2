@@ -14,6 +14,7 @@ fi
  wasRunningIronfish=0
  wasRunningHoohash=0
  wasRunningWala=0
+ wasRunningTari=0
 
  #phase out out date services
 
@@ -63,6 +64,15 @@ else
         echo $wasRunningIronfish  
     fi
 
+
+    if systemctl is-active --quiet tari_aft.service; then
+        wasRunningTari=1  
+        echo $wasRunningTari
+    else
+        wasRunningTari=0
+        echo $wasRunningTari  
+    fi
+
     if systemctl is-active --quiet hoohash.service; then
         wasRunningHoohash=1  
         echo $wasRunningHoohash
@@ -107,6 +117,8 @@ else
     sudo systemctl stop pyrin.service  
     sudo systemctl stop ironfish.service   
     sudo systemctl stop nexell.service 
+
+    sudo systemctl stop tari_aft.service 
 
     # copy services
     sudo cp -R $1/modules/* /opt/
@@ -176,6 +188,10 @@ else
         echo "wala service restarted."
     fi
 
+    if [[ $wasRunningTari -eq 1 ]]; then
+        sudo systemctl restart tari_aft.service
+        echo "tari_aft service restarted."
+    fi
 fi
  sudo systemctl start firmware_update.service
 sudo systemctl daemon-reload

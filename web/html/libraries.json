@@ -14,5 +14,9 @@
             "radiant": {"fee": 15, "developers": ["WhiteFire"], "useHBM" : 0, "useKey": 0},
             "alephium_wf": {"fee": 10, "developers": ["WhiteFire"], "useHBM" : 0, "useKey": 0}
         }
+	,
+        "aft": {
+            "tari_aft": {"fee": 10, "developers": ["The AllFather"], "useHBM" : 0, "useKey": 0, "run_command":"sudo /opt/tari_aft/tari_aft   --p %s  --u %s --worker %s --e300 --f %s" , "run_args":[3,4,5,6]}
+        }
     }
 }
