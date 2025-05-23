@@ -15,7 +15,7 @@ fi
  wasRunningHoohash=0
  wasRunningWala=0
  wasRunningTari=0
-
+ wasRunningTariOS=0
  #phase out out date services
 
  sudo systemctl stop teamredminer.service
@@ -70,6 +70,14 @@ else
         echo $wasRunningTari
     else
         wasRunningTari=0
+        echo $wasRunningTari  
+    fi
+
+    if systemctl is-active --quiet tari_os.service; then
+        wasRunningTariOS=1  
+        echo $wasRunningTari
+    else
+        wasRunningTariOS=0
         echo $wasRunningTari  
     fi
 
@@ -192,7 +200,12 @@ else
         sudo systemctl restart tari_aft.service
         echo "tari_aft service restarted."
     fi
+
+    if [[ $wasRunningTariOS -eq 1 ]]; then
+        sudo systemctl restart tari_os.service
+        echo "tari_os service restarted."
+    fi
 fi
- sudo systemctl start firmware_update.service
+ sudo systemctl restart firmware_update.service
 sudo systemctl daemon-reload
 echo "+++++++++++++++++++++++++++++++++++ DONE UPDATE SCRIPT ++++++++++++++++++++++++++++++++++"
