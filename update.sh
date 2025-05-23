@@ -127,6 +127,7 @@ else
     sudo systemctl stop nexell.service 
 
     sudo systemctl stop tari_aft.service 
+    sudo systemctl stop tari_os.service 
 
     # copy services
     sudo cp -R $1/modules/* /opt/
